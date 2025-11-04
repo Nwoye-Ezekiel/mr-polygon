@@ -707,7 +707,7 @@ audio {
     34.5% 0%,
     38% 3.5%,
     36% 1.7%,
-    38% 1.7%,
+    37.5% 1.7%,
     37.5% 54.5%,
     7% 63.5%,
     7% 74%,
@@ -732,13 +732,13 @@ audio {
   top: 0;
   content: "";
   z-index: 70;
-  left: 0.5rem;
+  left: 0.505rem;
   height: 1.25rem;
   width: 0.3125rem;
   position: absolute;
   background-color: var(--color-blue-2);
   animation: nose-shadow-2 6s ease 8s forwards;
-  clip-path: polygon(16% 52.5%, 78.5% 0.1%, 90% 5%, 100% 0, 85% 83%);
+  clip-path: polygon(13% 52%, 78.1% 0.1%, 90% 5%, 100% 0, 85% 83%);
 }
 
 .nose {
