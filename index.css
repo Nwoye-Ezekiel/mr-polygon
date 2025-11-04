@@ -993,7 +993,7 @@ audio {
   bottom: 0;
   width: 0.125rem;
   height: 3.125rem;
-  right: 0rem;
+  right: 0.01875rem;
   position: absolute;
   background-color: var(--color-white-1);
   animation: neck-highlight-1 6s ease 8s forwards;
@@ -1341,11 +1341,6 @@ audio {
   justify-content: center;
   transition: all 0.3s ease;
   color: var(--color-black-4);
-  background-image: linear-gradient(
-    to bottom,
-    var(--color-white-4),
-    var(--color-white-5)
-  );
 }
 
 .action-modal-wrapper button svg {
