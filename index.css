@@ -1101,11 +1101,7 @@ audio {
   position: absolute;
   animation: fade-in 6s ease 8s forwards;
   clip-path: polygon(0 0, 100% 0, 21.3% 100%, 0 100%);
-  background: linear-gradient(
-      48deg,
-      var(--color-blue-3) 0 75%,
-      transparent 33%
-    ),
+  background: linear-gradient(48deg, var(--color-blue-3) 0 75%, transparent 33%),
     linear-gradient(48deg, var(--color-blue-8) 75% 100%);
 }
 
@@ -1336,11 +1332,11 @@ audio {
   font-weight: 600;
   padding: 15px 18px;
   align-items: center;
-  border-radius: 16px;
-  box-sizing: border-box;
   justify-content: center;
+  transform: translateZ(0);
   transition: all 0.3s ease;
   color: var(--color-black-4);
+  clip-path: inset(0 0 0 0 round 16px);
 }
 
 .action-modal-wrapper button svg {
