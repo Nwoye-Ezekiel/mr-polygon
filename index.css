@@ -893,7 +893,7 @@ audio {
 .neck-wrapper {
   width: 5.5rem;
   height: 3.5625rem;
-  bottom: -0.0625rem;
+  bottom: -0.08rem;
   position: absolute;
   margin-left: -0.4375rem;
   background-color: var(--color-blue-11);
@@ -1097,16 +1097,16 @@ audio {
   opacity: 0.5;
   height: 2rem;
   top: -0.0625rem;
-  width: 3.8125rem;
+  width: 3.835rem;
   position: absolute;
   animation: fade-in 6s ease 8s forwards;
   clip-path: polygon(0 0, 100% 0, 21.3% 100%, 0 100%);
   background: linear-gradient(
       48deg,
-      var(--color-blue-3) 0 75.4%,
+      var(--color-blue-3) 0 75%,
       transparent 33%
     ),
-    linear-gradient(48deg, var(--color-blue-8) 75.4% 100%);
+    linear-gradient(48deg, var(--color-blue-8) 75% 100%);
 }
 
 .inner-body-2::after {
