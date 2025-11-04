@@ -1,21 +1,21 @@
 # Mr. Polygon – Animated Geometric Portrait
 
-An immersive, interactive CSS art piece featuring a geometric portrait brought to life through pure CSS animations. Mr. Polygon combines cubist-inspired design with smooth animations, ambient music, and user-controlled experiences—all crafted without images or SVGs.
+An immersive, interactive CSS art piece featuring a geometric portrait brought to life through pure CSS animations. Mr. Polygon combines cubist-inspired design with smooth animations, ambient music, and user-controlled experiences, all crafted without images or SVGs.
 
 View Live: 🔗 [Mr. Polygon Demo](https://nwoye-ezekiel.github.io/mr-polygon/)
 
 ### 🧠 Key Features
 
+- Fully responsive design
 - Pure CSS geometric art with polygon-based shapes
-- Cinematic entrance animation with eye movement and scroll reveal
 - Integrated ambient music (cover of "Another Love")
 - Interactive modal for user-controlled music playback
+- Cinematic entrance animation with eye movement and scroll reveal
+- Monochromatic blue color scheme creating a contemplative atmosphere
 - Three utility controls:
-  - **Expand/Shrink** – Responsive scaling for optimal viewing on any device
   - **Music Toggle** – Play/pause background audio
   - **Theme Switch** – Toggle between light and dark modes
-- Monochromatic blue color scheme creating a contemplative atmosphere
-- Fully responsive design
+  - **Expand/Shrink** – Responsive scaling for optimal viewing on any device
 
 ### 📸 Preview
 
