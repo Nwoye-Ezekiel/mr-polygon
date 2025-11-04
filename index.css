@@ -268,7 +268,7 @@ audio {
   top: 0.85625rem;
   height: 1.0625rem;
   position: absolute;
-  clip-path: polygon(0 0, 83% 0, 83% 100%, 0 100%);
+  clip-path: polygon(0 0, 83% 0, 80% 100%, 0 100%);
 }
 
 .left-ear-shadow-2 {
