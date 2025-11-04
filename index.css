@@ -527,7 +527,7 @@ audio {
     98.59% 0%,
     93% 13%,
     77% 25.5%,
-    75.73% 35%,
+    76% 35%,
     54.3% 79.5%,
     51.44% 100%,
     39% 100%,
@@ -1101,8 +1101,8 @@ audio {
   position: absolute;
   animation: fade-in 6s ease 8s forwards;
   clip-path: polygon(0 0, 100% 0, 21.3% 100%, 0 100%);
-  background: linear-gradient(48deg, var(--color-blue-3) 0 75%, transparent 33%),
-    linear-gradient(48deg, var(--color-blue-8) 75% 100%);
+  background: linear-gradient(48deg, var(--color-blue-3) 0 74.85%, transparent 33%),
+    linear-gradient(48deg, var(--color-blue-8) 74.85% 100%);
 }
 
 .inner-body-2::after {
