@@ -1,0 +1,1663 @@
+:root {
+  --color-black-1: #000;
+  --color-black-2: #040308;
+  --color-black-3: #0000001a;
+  --color-black-4: #1a1a1a;
+  --color-black-5: #2a2a2e;
+  --color-black-6: #1f1f23;
+  --color-black-7: #313135;
+  --color-black-8: #26262a;
+  --color-black-9: #2626590f;
+
+  --color-white-1: #fff;
+  --color-white-2: #cfcfc7;
+  --color-white-3: #b9bdbe;
+  --color-white-4: #fcfcfd;
+  --color-white-5: #f1f1f4;
+  --color-white-6: #f6f6f8;
+  --color-white-7: #ebebef;
+
+  --color-purple-1: #dbe1fb;
+  --color-purple-2: #bec9f7;
+  --color-purple-3: #a0a3f0;
+  --color-purple-4: #8684ef;
+  --color-purple-5: #354664;
+  --color-purple-6: #353865;
+
+  --color-blue-1: #535bc2;
+  --color-blue-2: #4953bb;
+  --color-blue-3: #3f4ab3;
+  --color-blue-4: #303ea9;
+  --color-blue-5: #2634a1;
+  --color-blue-6: #2836a3bf;
+  --color-blue-7: #082185;
+  --color-blue-8: #051467;
+  --color-blue-9: #030c4d;
+  --color-blue-10: #20214e;
+  --color-blue-11: #011530;
+  --color-blue-12: #030e20;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html.paused *:not(.music-modal-wrapper):not(.music-modal-wrapper *),
+html.paused *:not(.music-modal-wrapper):not(.music-modal-wrapper *)::before,
+html.paused *:not(.music-modal-wrapper):not(.music-modal-wrapper *)::after {
+  animation-play-state: paused !important;
+}
+
+html {
+  transition: all 0.5s ease;
+  font-size: max(calc(16 * min(100vw / 300, 100vh / 500)), 0rem);
+}
+
+body {
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  font-family: "system-ui", "Trebuchet MS", "Helvetica";
+}
+
+body::-webkit-scrollbar,
+audio {
+  display: none;
+}
+
+.container {
+  opacity: 0;
+  display: flex;
+  overflow: hidden;
+  height: 26.25rem;
+  width: 18.8125rem;
+  position: relative;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--color-purple-2);
+  animation: fade-in 6s ease 0.5s forwards;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  animation: shrink 7s ease 2s forwards;
+  background-color: var(--color-purple-1);
+}
+
+.man {
+  width: 100%;
+  display: flex;
+  margin-top: auto;
+  position: relative;
+  flex-direction: column;
+  transform: translateY(100%);
+  animation: slide-up 7s ease 2s forwards;
+}
+
+.head {
+  width: 100%;
+  height: 12rem;
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+
+.hair {
+  z-index: 90;
+  top: 0.0625rem;
+  height: 3.75rem;
+  left: 4.73125rem;
+  width: 8.4125rem;
+  position: absolute;
+  background-color: var(--color-purple-5);
+  clip-path: polygon(
+    0% 0%,
+    100% 14.28%,
+    96.29% 99%,
+    92.59% 88.88%,
+    92.59% 46.03%,
+    12.59% 46.03%,
+    12.59% 92.06%,
+    9.65% 95.23%
+  );
+}
+
+.hair::before {
+  top: 0;
+  left: 0;
+  content: "";
+  z-index: 70;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(
+    105deg,
+    var(--color-blue-12) 0%,
+    var(--color-blue-12) 28.5%,
+    var(--color-blue-11) 28.5%,
+    var(--color-blue-11) 100%
+  );
+  clip-path: polygon(
+    0% 0%,
+    40% 0%,
+    98.5% 17.5%,
+    96.8% 100%,
+    92.59% 88.88%,
+    92.59% 46.03%,
+    12.59% 46.03%,
+    12.59% 92.06%,
+    9.65% 95.23%
+  );
+}
+
+.ears {
+  top: 4.125rem;
+  display: flex;
+  height: 2.875rem;
+  width: 9.84375rem;
+  position: absolute;
+  margin-left: -0.4375rem;
+  justify-content: space-between;
+}
+
+.left-ear-wrapper,
+.right-ear {
+  z-index: 80;
+  height: 100%;
+  width: 1.3125rem;
+  position: relative;
+}
+
+.left-ear-wrapper {
+  background-color: var(--color-blue-11);
+  clip-path: polygon(
+    0% 31.46%,
+    52.38% 0%,
+    100% 11.23%,
+    100% 94.38%,
+    61.9% 100%
+  );
+}
+
+.left-ear {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  background-color: var(--color-blue-5);
+  clip-path: polygon(
+    2.2% 31.7%,
+    52.8% 1.2%,
+    100% 12.2%,
+    100% 93.41%,
+    62.9% 99%
+  );
+}
+
+.left-ear::before {
+  right: 0;
+  bottom: 0;
+  content: "";
+  height: 100%;
+  width: 0.5625rem;
+  position: absolute;
+  background-color: var(--color-blue-8);
+  clip-path: polygon(
+    33.33% 4.44%,
+    100% 11.11%,
+    100% 95%,
+    9% 99.6%,
+    77.77% 88.88%,
+    77.77% 48.88%
+  );
+}
+
+.left-ear-shadow-1::before {
+  right: 0rem;
+  content: "";
+  top: 0.59375rem;
+  width: 1.0625rem;
+  height: 1.0625rem;
+  position: absolute;
+  background-color: var(--color-blue-11);
+  clip-path: polygon(
+    0% 23.52%,
+    41.17% 0%,
+    100% 82.35%,
+    100% 100%,
+    59% 41.17%,
+    41.17% 70.58%,
+    23.52% 64.7%
+  );
+}
+
+.left-ear-shadow-1::after {
+  right: 0rem;
+  content: "";
+  top: 0.59375rem;
+  width: 1.0625rem;
+  height: 1.0625rem;
+  position: absolute;
+  background-color: var(--color-blue-8);
+  clip-path: polygon(
+    1% 25%,
+    40.5% 2.5%,
+    98% 82.35%,
+    100% 100%,
+    59% 41%,
+    41.17% 70.58%,
+    23.52% 64.7%
+  );
+}
+
+.left-ear-shadow-2-wrapper {
+  right: 0;
+  z-index: 50;
+  width: 0.75rem;
+  top: 0.85625rem;
+  height: 1.0625rem;
+  position: absolute;
+  clip-path: polygon(0 0, 83% 0, 83% 100%, 0 100%);
+}
+
+.left-ear-shadow-2 {
+  width: 100%;
+  z-index: 80;
+  height: 100%;
+  background-color: var(--color-blue-11);
+  clip-path: polygon(0% 58.82%, 41.66% 0%, 100% 58.82%, 50% 100%);
+}
+
+.left-ear-shadow-2::before {
+  top: 0;
+  left: 0;
+  z-index: 80;
+  content: "";
+  width: 100%;
+  z-index: 80;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(
+    53deg,
+    var(--color-blue-5) 0%,
+    var(--color-blue-5) 62%,
+    var(--color-blue-8) 62%,
+    var(--color-blue-8) 100%
+  );
+  clip-path: polygon(3% 58.82%, 42% 3.5%, 100% 60.5%, 51.83% 99%);
+}
+
+.right-ear {
+  background-color: var(--color-purple-6);
+  clip-path: polygon(0% 13.04%, 47.61% 0%, 100% 32.6%, 42.85% 100%, 0% 93.47%);
+}
+
+.right-ear::before {
+  content: "";
+  z-index: 80;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--color-white-1);
+  clip-path: polygon(0% 14.04%, 47% 1.2%, 97.9% 32.8%, 41.85% 99%, 0% 92.47%);
+}
+
+.right-ear::after {
+  content: "";
+  width: 100%;
+  z-index: 85;
+  height: 100%;
+  position: absolute;
+  clip-path: polygon(
+    0% 14.04%,
+    47% 1.2%,
+    97.9% 32.8%,
+    97.9% 32.8%,
+    41.85% 99%,
+    41.85% 99%,
+    0% 92.47%
+  );
+  background-color: var(--color-purple-4);
+  animation: right-ear 6s ease 8s forwards;
+}
+
+.right-ear-shadow-1 {
+  left: 0rem;
+  z-index: 90;
+  top: 0.5625rem;
+  width: 1.0625rem;
+  height: 0.9375rem;
+  position: absolute;
+  background-color: var(--color-blue-8);
+  clip-path: polygon(0% 100%, 58.82% 0%, 98% 25.5%, 78% 80%);
+}
+
+.right-ear-shadow-1::before {
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  z-index: 80;
+  position: absolute;
+  background: linear-gradient(
+    50deg,
+    var(--color-purple-4) 0%,
+    var(--color-purple-4) 56%,
+    var(--color-blue-5) 56%,
+    var(--color-blue-5) 100%
+  );
+  clip-path: polygon(4% 100%, 59.5% 3%, 98% 28.5%, 78% 80%);
+}
+
+.right-ear-shadow-2 {
+  left: 0;
+  z-index: 90;
+  top: 0.75rem;
+  width: 0.75rem;
+  overflow: hidden;
+  height: 1.15625rem;
+  position: absolute;
+  background-color: var(--color-blue-8);
+  clip-path: polygon(0% 64.7%, 66.66% 0%, 100% 52.94%, 50% 100%);
+}
+
+.right-ear-shadow-2::before {
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  z-index: 80;
+  z-index: 80;
+  height: 100%;
+  position: absolute;
+  background: var(--color-blue-5);
+  clip-path: polygon(4% 64.7%, 66% 4%, 97% 52.94%, 47% 100%);
+}
+
+.right-ear-shadow-2::after {
+  top: 0;
+  left: 0;
+  z-index: 80;
+  content: "";
+  width: 100%;
+  z-index: 80;
+  height: 100%;
+  position: absolute;
+  background: var(--color-purple-4);
+  clip-path: polygon(0% 64.7%, 65% 26%, 83.33% 52.94%, 50% 100%);
+}
+
+.face-wrapper {
+  z-index: 80;
+  height: 9rem;
+  width: 7.3rem;
+  margin-top: 1.78125rem;
+  margin-left: -0.4375rem;
+  position: relative;
+  clip-path: polygon(
+    0% 65.97%,
+    0 0,
+    100% 0,
+    100% 65.97%,
+    63.79% 100%,
+    37.93% 100%
+  );
+  background-color: var(--color-blue-11);
+}
+
+.face-wrapper::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  content: "";
+  z-index: 50;
+  height: 100%;
+  position: absolute;
+  background-color: var(--color-white-1);
+  clip-path: polygon(
+    0.36% 65.95%,
+    0.36% 0%,
+    99.7% 0,
+    99.7% 65.85%,
+    63.79% 99.7%,
+    37.93% 99.7%
+  );
+}
+
+.face {
+  z-index: 50;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(
+    0% 65.97%,
+    0 0,
+    100% 0,
+    100% 0,
+    100% 65.97%,
+    63.79% 100%,
+    37.93% 100%
+  );
+  background-color: var(--color-purple-4);
+  animation: face-highlight 6s ease 8s forwards;
+}
+
+.face::before {
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  z-index: 50;
+  height: 100%;
+  position: absolute;
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 22.91%,
+    93.1% 52.08%,
+    76.72% 63.88%,
+    62.06% 100%,
+    0% 100%
+  );
+  background-color: var(--color-purple-4);
+}
+
+.face::after {
+  top: 0;
+  left: 0;
+  content: "";
+  z-index: 50;
+  height: 100%;
+  opacity: 0.5;
+  width: 2.71875rem;
+  position: absolute;
+  clip-path: polygon(
+    0 0,
+    51.5% 0%,
+    50.57% 1%,
+    63% 23%,
+    100% 33.65%,
+    33.4% 33.65%,
+    37% 56.25%,
+    71.26% 64.58%,
+    97% 100%,
+    0% 100%
+  );
+  background-color: var(--color-blue-3);
+  animation: fade-in 6s ease 8s forwards;
+}
+
+.forehead-shadow {
+  z-index: 60;
+  opacity: 0.5;
+  top: 1.9375rem;
+  height: 1.75rem;
+  left: 1.648125rem;
+  width: 4.40625rem;
+  position: absolute;
+  background: linear-gradient(
+    90deg,
+    var(--color-blue-7) 0%,
+    var(--color-blue-7) 50%,
+    var(--color-blue-3) 50%,
+    var(--color-blue-3) 100%
+  );
+  clip-path: polygon(
+    1.6% 15%,
+    0% 0%,
+    28.57% 0%,
+    36% 28.57%,
+    53.5% 28.57%,
+    61.9% 0%,
+    98.59% 0%,
+    93% 13%,
+    77% 25.5%,
+    75.73% 35%,
+    54.3% 79.5%,
+    51.44% 100%,
+    39% 100%,
+    28% 50.8%,
+    7% 26%
+  );
+  animation: fade-in 6s ease 8s forwards;
+}
+
+.eyes {
+  z-index: 80;
+  display: flex;
+  top: 1.8125rem;
+  overflow: hidden;
+  left: 0.78125rem;
+  width: 5.84375rem;
+  height: 1.21875rem;
+  position: absolute;
+  justify-content: space-between;
+}
+
+.left-eye-wrapper {
+  height: 100%;
+  width: 2.1875rem;
+  position: relative;
+}
+
+.left-eyebrow {
+  left: 0;
+  width: 100%;
+  height: 0.5rem;
+  top: 0.03125rem;
+  position: absolute;
+  background-color: var(--color-blue-11);
+  clip-path: polygon(11.42% 12.5%, 100% 0, 100% 37.5%, 0 100%);
+}
+
+.right-eye-wrapper {
+  height: 100%;
+  width: 2.25rem;
+  position: relative;
+}
+
+.right-eyebrow {
+  left: 0;
+  width: 100%;
+  height: 0.5rem;
+  top: 0.03125rem;
+  position: absolute;
+  background-color: var(--color-white-1);
+  clip-path: polygon(0% 37.5%, 0 0, 88.57% 12.5%, 100% 100%);
+}
+
+.right-eyebrow::before {
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 0.5rem;
+  position: absolute;
+  background-color: var(--color-blue-11);
+  animation: eyebrow-highlight 6s ease 8s forwards;
+  clip-path: polygon(0% 37.5%, 0 0, 88.57% 12.5%, 100% 100%, 100% 100%);
+}
+
+.left-eye,
+.right-eye {
+  top: 0.48rem;
+  width: 2.4625rem;
+  overflow: hidden;
+  height: 2.93625rem;
+  position: absolute;
+  background-color: var(--color-white-2);
+  border-radius: 59% 41% 70% 30% / 59% 46% 54% 41%;
+}
+
+.left-eye {
+  left: -0.1375rem;
+}
+
+.right-eye {
+  right: -0.125rem;
+  transform: scaleX(-1);
+}
+
+.left-cornea,
+.right-cornea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  left: 0.0625rem;
+}
+
+.right-cornea {
+  transform: scaleX(-1);
+}
+
+.left-cornea::before,
+.right-cornea::before {
+  content: "";
+  top: 0.125rem;
+  width: 2.875rem;
+  height: 3.6675rem;
+  border-radius: 50%;
+  position: absolute;
+  background-color: var(--color-white-1);
+}
+
+.left-cornea::before {
+  left: -0.428125rem;
+  transform: rotate(38.76deg);
+}
+
+.right-cornea::before {
+  right: -0.428125rem;
+  transform: rotate(-38.76deg);
+}
+
+.left-pupil,
+.right-pupil {
+  top: 0.03125rem;
+  width: 0.6875rem;
+  height: 0.6875rem;
+  border-radius: 50%;
+  position: absolute;
+  background: radial-gradient(
+      circle at 0.25rem 0.3125rem,
+      var(--color-white-1) 0%,
+      var(--color-white-1) 0.071875rem,
+      transparent 0.071875rem
+    ),
+    conic-gradient(
+      from 0deg at 50% 50%,
+      var(--color-black-2) 0deg,
+      var(--color-black-2) 90deg,
+      var(--color-black-2) 180deg,
+      var(--color-black-2) 270deg,
+      var(--color-black-2) 360deg
+    );
+}
+
+.left-pupil {
+  left: 0.9rem;
+  animation: move-left-pupil 9s ease 2s,
+    move-left-pupil-infinite 15s ease 8s infinite;
+}
+
+.right-pupil {
+  left: 0.8125rem;
+  animation: move-right-pupil 9s ease 2s,
+    move-right-pupil-infinite 15s ease 8s infinite;
+}
+
+.nose-wrapper {
+  left: 50%;
+  z-index: 70;
+  top: 2.375rem;
+  height: 3.125rem;
+  width: 2.40625rem;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.nose-wrapper::before {
+  top: 0;
+  left: 0;
+  content: "";
+  z-index: 70;
+  opacity: 0.5;
+  height: 3.8125rem;
+  position: absolute;
+  width: 2.171875rem;
+  clip-path: polygon(
+    1% 62.5%,
+    34.5% 0%,
+    38% 3.5%,
+    36% 1.7%,
+    38% 1.7%,
+    37.5% 54.5%,
+    7% 63.5%,
+    7% 74%,
+    25.89% 75.8%,
+    44% 75.5%,
+    59% 77.5%,
+    74.82% 74%,
+    92% 78.3%,
+    100% 77.04%,
+    80% 86.5%,
+    73% 91.8%,
+    53.8% 99%,
+    53.8% 91.8%,
+    28% 87%,
+    1% 75.4%
+  );
+  background-color: var(--color-blue-6);
+  animation: fade-in 6s ease 8s forwards;
+}
+
+.nose-wrapper::after {
+  top: 0;
+  content: "";
+  z-index: 70;
+  left: 0.5rem;
+  height: 1.25rem;
+  width: 0.3125rem;
+  position: absolute;
+  background-color: var(--color-blue-2);
+  animation: nose-shadow-2 6s ease 8s forwards;
+  clip-path: polygon(16% 52.5%, 78.5% 0.1%, 90% 5%, 100% 0, 85% 83%);
+}
+
+.nose {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: var(--color-black-1);
+  clip-path: polygon(
+    1% 76%,
+    30% 64%,
+    33.76% 0%,
+    67.53% 0%,
+    72.72% 64%,
+    100% 76%,
+    100% 92%,
+    77.92% 98%,
+    67.53% 95.5%,
+    51.94% 100%,
+    33.76% 95.5%,
+    23.37% 98%,
+    1% 92%
+  );
+}
+
+.nose-shadow {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--color-white-1);
+  clip-path: polygon(
+    2.1% 76.5%,
+    31% 64.5%,
+    34.76% 0%,
+    66.53% 0%,
+    71.72% 64.5%,
+    99% 76.5%,
+    99% 91.5%,
+    77.92% 97.1%,
+    67.53% 94.6%,
+    51.94% 99.1%,
+    33.76% 94.6%,
+    23.37% 97.1%,
+    2.1% 91.5%
+  );
+}
+
+.nose-shadow::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--color-purple-4);
+  clip-path: polygon(
+    1% 76%,
+    30% 64%,
+    33.76% 0%,
+    67.53% 0%,
+    67.53% 0%,
+    67.53% 0%,
+    80% 72%,
+    72.72% 64%,
+    100% 76%,
+    100% 92%,
+    77.92% 98%,
+    77.92% 98%,
+    67.53% 95.5%,
+    51.94% 100%,
+    33.76% 95.5%,
+    23.37% 98%,
+    1% 92%
+  );
+  animation: nose-shadow-1 6s ease 8s forwards;
+}
+
+.mustache {
+  z-index: 80;
+  height: 1rem;
+  left: 1.96875rem;
+  width: 3.40625rem;
+  position: absolute;
+  bottom: 2.21875rem;
+  background-color: var(--color-blue-11);
+  clip-path: polygon(
+    0% 100%,
+    35.71% 12.5%,
+    48.21% 37.5%,
+    58.92% 0%,
+    100% 56.25%,
+    48.21% 37.5%
+  );
+}
+
+.mouth-wrapper {
+  z-index: 70;
+  left: 2.375rem;
+  bottom: 2.25rem;
+  width: 2.5625rem;
+  height: 0.5625rem;
+  position: absolute;
+  background-color: var(--color-blue-10);
+  clip-path: polygon(0% 100%, 36.58% 28%, 49% 33.33%, 60.97% 0%, 100% 44.44%);
+}
+
+.mouth {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-blue-4) 0%,
+    var(--color-blue-4) 49%,
+    var(--color-blue-1) 49%,
+    var(--color-blue-1) 100%
+  );
+  clip-path: polygon(0% 95%, 36.58% 28%, 49% 33.33%, 60.97% 0%, 100% 39%);
+}
+
+.soul-patch {
+  z-index: 70;
+  height: 1.25rem;
+  left: 2.65625rem;
+  width: 1.8125rem;
+  bottom: 0.9375rem;
+  position: absolute;
+}
+
+.soul-patch::before {
+  top: 0;
+  left: 0;
+  content: "";
+  z-index: 80;
+  width: 100%;
+  opacity: 0.5;
+  height: 0.5rem;
+  position: absolute;
+  background-color: var(--color-black-1);
+  animation: fade-in 6s ease 8s forwards;
+  clip-path: polygon(0% 44.44%, 100% 0%, 55.17% 95%);
+}
+
+.soul-patch::after {
+  top: 0;
+  right: 0;
+  content: "";
+  z-index: 70;
+  width: 1.625rem;
+  height: 1.25rem;
+  position: absolute;
+  background-color: var(--color-blue-11);
+  clip-path: polygon(2% 16%, 93.5% 1%, 50% 100%);
+}
+
+.neck-wrapper {
+  width: 5.5rem;
+  height: 3.5625rem;
+  bottom: -0.0625rem;
+  position: absolute;
+  margin-left: -0.4375rem;
+  background-color: var(--color-blue-11);
+}
+
+.neck {
+  width: 99.8%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-purple-4);
+}
+
+.neck::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  content: "";
+  opacity: 0.5;
+  height: 100%;
+  position: absolute;
+  background-color: var(--color-blue-8);
+  animation: fade-in 6s ease 8s forwards;
+  clip-path: polygon(0 0, 99% 0, 78% 84.21%, 62.5% 100%, 0 100%);
+}
+
+.neck::after {
+  left: 0;
+  bottom: 0;
+  content: "";
+  opacity: 0.5;
+  width: 2.375rem;
+  height: 2.375rem;
+  position: absolute;
+  background-color: var(--color-purple-4);
+  animation: neck-shadow 6s ease 8s forwards;
+  clip-path: polygon(0% 40%, 15% 0%, 99% 100%, 0 100%);
+}
+
+.beard {
+  z-index: 80;
+  width: 3.375rem;
+  bottom: 0.375rem;
+  height: 2.4375rem;
+  position: absolute;
+  background-color: var(--color-white-1);
+  clip-path: polygon(3% 0%, 22% 51.21%, 78% 51.21%, 91% 0%, 100% 100%, 0 100%);
+}
+
+.beard::before {
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  z-index: 90;
+  height: 100%;
+  position: absolute;
+  clip-path: polygon(
+    3% 0%,
+    22% 51.21%,
+    78% 51.21%,
+    91% 0%,
+    93% 0%,
+    97.5% 97%,
+    55% 100%,
+    0 100%
+  );
+  clip-path: polygon(
+    3% 0%,
+    22% 51.21%,
+    78% 51.21%,
+    91% 0%,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    0 100%
+  );
+  background-color: var(--color-blue-11);
+  animation: beard-highlight 6s ease 8s forwards;
+}
+
+.beard::after {
+  top: 0;
+  left: 0;
+  content: "";
+  z-index: 90;
+  height: 100%;
+  opacity: 0.5;
+  width: 1.45625rem;
+  position: absolute;
+  background-color: var(--color-blue-12);
+  animation: fade-in 6s ease 8s forwards;
+  clip-path: polygon(0% 0%, 50% 0%, 50% 50%, 100% 100%, 0 100%);
+}
+
+.neck-highlight {
+  bottom: 0;
+  width: 0.125rem;
+  height: 3.125rem;
+  right: 0.01875rem;
+  position: absolute;
+  background-color: var(--color-white-1);
+  animation: neck-highlight-1 6s ease 8s forwards;
+  clip-path: polygon(100% 0, 100% 100%, 100% 100%);
+}
+
+.body {
+  width: 100%;
+  display: flex;
+  height: 7.5625rem;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-blue-11);
+  clip-path: polygon(
+    0% 23.14%,
+    34.21% 0%,
+    63.45% 0%,
+    100% 18.18%,
+    100% 100%,
+    0% 100%
+  );
+}
+
+.body::before {
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: var(--color-blue-8);
+  clip-path: polygon(
+    0% 23.64%,
+    34.21% 0.5%,
+    63.45% 0.4%,
+    100% 18.6%,
+    100% 100%,
+    0% 100%
+  );
+}
+
+.body::after {
+  top: 0;
+  content: "";
+  z-index: 50;
+  height: 4rem;
+  opacity: 0.5;
+  left: 0.625rem;
+  width: 7.25rem;
+  position: absolute;
+  clip-path: polygon(
+    0 46%,
+    77.5% 0,
+    80.17% 0,
+    100% 34.8%,
+    55.5% 71.87%,
+    54.5% 100%
+  );
+  background-color: var(--color-black-3);
+  animation: fade-in 6s ease 8s forwards;
+}
+
+.inner-body-1 {
+  height: 100%;
+  display: flex;
+  width: 9.3125rem;
+  align-items: center;
+  margin-left: -0.625rem;
+  justify-content: center;
+  background-color: var(--color-blue-7);
+  clip-path: polygon(
+    4% 6.9%,
+    21.5% 0.4%,
+    21.5% 0%,
+    80.5% 0%,
+    80.5% 0.4%,
+    97.31% 5.1%,
+    100% 85.12%,
+    93.95% 90%,
+    100% 95.86%,
+    100% 100%,
+    0% 100%,
+    0% 95.86%,
+    6.05% 90%,
+    0% 85.12%
+  );
+}
+
+.inner-body-2 {
+  height: 100%;
+  width: 5.6875rem;
+  position: relative;
+  background-color: var(--color-purple-4);
+  clip-path: polygon(3.29% 0%, 100% 0, 96.71% 100%, 0 100%);
+}
+
+.inner-body-2::before {
+  left: 0;
+  content: "";
+  opacity: 0.5;
+  height: 2rem;
+  top: -0.0625rem;
+  width: 3.8125rem;
+  position: absolute;
+  animation: fade-in 6s ease 8s forwards;
+  clip-path: polygon(0 0, 100% 0, 21.3% 100%, 0 100%);
+  background: linear-gradient(
+      48deg,
+      var(--color-blue-3) 0 75.4%,
+      transparent 33%
+    ),
+    linear-gradient(48deg, var(--color-blue-8) 75.4% 100%);
+}
+
+.inner-body-2::after {
+  content: "";
+  top: -0.0625rem;
+  width: 0.125rem;
+  right: 0.01875rem;
+  height: 0.3125rem;
+  position: absolute;
+  background-color: var(--color-white-1);
+  animation: neck-highlight-2 6s ease 8s forwards;
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+}
+
+.left-collar {
+  top: 0;
+  left: 0;
+  z-index: 100;
+  height: 5rem;
+  position: absolute;
+  width: 2.96875rem;
+  background-color: var(--color-blue-11);
+  clip-path: polygon(0 0, 6.5% 0, 100% 53.75%, 0 100%);
+}
+
+.left-collar::before {
+  top: 0;
+  right: 0;
+  content: "";
+  width: 100%;
+  z-index: 100;
+  height: 100%;
+  position: absolute;
+  background-color: var(--color-white-1);
+  clip-path: polygon(0 0, 6.5% 0.6%, 99% 53.75%, 0 99.4%);
+}
+
+.right-collar {
+  top: 0;
+  right: 0;
+  height: 5rem;
+  z-index: 100;
+  width: 2.73125rem;
+  position: absolute;
+  background-color: var(--color-blue-11);
+  clip-path: polygon(0 53.75%, 100% 0, 100% 100%);
+}
+
+.right-collar::before {
+  top: 0;
+  right: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  position: absolute;
+  background-color: var(--color-white-1);
+  clip-path: polygon(1% 53.75%, 100% 0.6%, 100% 99.4%);
+}
+
+.shirt {
+  left: 0;
+  bottom: 0;
+  z-index: 40;
+  width: 100%;
+  display: flex;
+  height: 4.875rem;
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--color-white-1);
+  animation: shirt-shadow 6s ease 8s forwards;
+}
+
+.shirt::before {
+  left: 0;
+  bottom: 0;
+  content: "";
+  width: 2.375rem;
+  height: 3.4375rem;
+  position: absolute;
+  background-color: var(--color-white-1);
+  clip-path: polygon(0 49%, 70% 4%, 100% 42%, 76.5% 100%, 0 100%);
+}
+
+.shirt::after {
+  right: 0;
+  bottom: 0;
+  content: "";
+  width: 2.3125rem;
+  height: 4.0875rem;
+  position: absolute;
+  background-color: var(--color-white-1);
+  clip-path: polygon(0 0, 100% 58%, 100% 100%, 0 100%);
+}
+
+.tie {
+  z-index: 40;
+  width: 3rem;
+  height: 100%;
+  position: relative;
+  background-color: var(--color-blue-8);
+  animation: tie-shadow 6s ease 8s forwards;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    68% 58.75%,
+    85% 100%,
+    21% 100%,
+    39.58% 58.75%
+  );
+}
+
+.tie::before {
+  bottom: 0;
+  content: "";
+  width: 1.875rem;
+  right: 0.4375rem;
+  height: 4.6875rem;
+  position: absolute;
+  background-color: var(--color-blue-8);
+  clip-path: polygon(
+    4% 19%,
+    47% 2.5%,
+    100% 24.5%,
+    72% 56%,
+    99% 100%,
+    16.66% 100%,
+    40% 57.5%,
+    53.33% 56.5%,
+    32% 55%
+  );
+}
+
+.music-modal-wrapper {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
+  height: 100%;
+  display: flex;
+  padding: 20px;
+  position: fixed;
+  visibility: hidden;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  animation: show-modal 1s ease 1s forwards;
+  background-color: var(--color-black-1);
+}
+
+.music-modal {
+  gap: 25px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 35px 40px 40px;
+}
+
+.music-modal h3 {
+  font-size: 24px;
+  color: var(--color-white-1);
+}
+
+.music-modal div {
+  gap: 15px;
+  display: flex;
+}
+
+.music-modal button {
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 15px 30px;
+  font-family: inherit;
+  transition: 0.1s ease;
+  color: var(--color-white-1);
+  background-color: transparent;
+}
+
+#no-button {
+  color: var(--color-white-1);
+  border: 2px solid var(--color-pink);
+  background-color: var(--color-blue-11);
+}
+
+#no-button:hover {
+  background-color: var(--color-blue-12);
+}
+
+#yes-button {
+  background-color: var(--color-blue-6);
+}
+
+#yes-button:hover {
+  background-color: var(--color-blue-5);
+}
+
+.fade-out-animation {
+  animation: hide-modal 1s ease forwards;
+}
+
+.action-modal-wrapper {
+  top: 20px;
+  gap: 10px;
+  right: 20px;
+  z-index: 100;
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+}
+
+.action-modal-wrapper button {
+  margin: 0;
+  display: flex;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  font-weight: 600;
+  padding: 15px 18px;
+  align-items: center;
+  border-radius: 16px;
+  box-sizing: border-box;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: var(--color-black-4);
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-white-4),
+    var(--color-white-5)
+  );
+}
+
+.action-modal-wrapper button svg {
+  width: 17px;
+  height: 17px;
+}
+
+.action-modal-wrapper button:hover {
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-white-6),
+    var(--color-white-7)
+  );
+}
+
+.action-modal-wrapper button:active {
+  transform: scale(0.95);
+  box-shadow: 0 4px 8px var(--color-black-9);
+}
+
+body[data-theme="dark"] .action-modal-wrapper button {
+  color: var(--color-white-4);
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-black-5),
+    var(--color-black-6)
+  );
+}
+
+body[data-theme="dark"] .action-modal-wrapper button:hover {
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-black-7),
+    var(--color-black-8)
+  );
+}
+
+.controls {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.controls.active {
+  pointer-events: all;
+  animation: fade-in 6s ease forwards;
+}
+
+@keyframes show-modal {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes hide-modal {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+  }
+  15% {
+    transform: translateY(70%);
+  }
+  85% {
+    transform: translateY(70%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes shrink {
+  0% {
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  85% {
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    top: 3.125rem;
+    width: 14.75rem;
+    height: 14.8125rem;
+  }
+}
+
+@keyframes move-left-pupil {
+  0% {
+    left: 1.1875rem;
+  }
+  20% {
+    left: 1.1875rem;
+  }
+  30% {
+    left: 0.625rem;
+  }
+  45% {
+    left: 0.625rem;
+  }
+  60% {
+    left: 0.9rem;
+  }
+  100% {
+    left: 0.9rem;
+  }
+}
+
+@keyframes move-right-pupil {
+  0% {
+    left: 1.1rem;
+  }
+  20% {
+    left: 1.1rem;
+  }
+  30% {
+    left: 0.575rem;
+  }
+  45% {
+    left: 0.575rem;
+  }
+  60% {
+    left: 0.8125rem;
+  }
+  100% {
+    left: 0.8125rem;
+  }
+}
+
+@keyframes move-left-pupil-infinite {
+  0% {
+    left: 0.9rem;
+  }
+  15% {
+    left: 0.9rem;
+  }
+  25% {
+    left: 1.1875rem;
+  }
+  40% {
+    left: 1.1875rem;
+  }
+  55% {
+    left: 0.625rem;
+  }
+  70% {
+    left: 0.625rem;
+  }
+  80% {
+    left: 0.9rem;
+  }
+  100% {
+    left: 0.9rem;
+  }
+}
+
+@keyframes move-right-pupil-infinite {
+  0% {
+    left: 0.8125rem;
+  }
+  15% {
+    left: 0.8125rem;
+  }
+  25% {
+    left: 1.1rem;
+  }
+  40% {
+    left: 1.1rem;
+  }
+  55% {
+    left: 0.575rem;
+  }
+  70% {
+    left: 0.575rem;
+  }
+  80% {
+    left: 0.8125rem;
+  }
+  100% {
+    left: 0.8125rem;
+  }
+}
+
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes face-highlight {
+  100% {
+    clip-path: polygon(
+      0.36% 65.95%,
+      0.36% 0%,
+      99.7% 0,
+      99.7% 53.5%,
+      97.5% 64.8%,
+      63.79% 99.7%,
+      37.93% 99.7%
+    );
+    background-color: var(--color-purple-3);
+  }
+}
+
+@keyframes beard-highlight {
+  100% {
+    clip-path: polygon(
+      3% 0%,
+      22% 51.21%,
+      78% 51.21%,
+      91% 0%,
+      93% 0%,
+      97.5% 97%,
+      55% 100%,
+      0 100%
+    );
+  }
+}
+
+@keyframes nose-shadow-1 {
+  100% {
+    clip-path: polygon(
+      0% 76%,
+      31% 64%,
+      33.76% 0%,
+      67.53% 0%,
+      69% 29%,
+      68% 29%,
+      68% 72%,
+      72.72% 68%,
+      97.5% 77%,
+      97.5% 90.5%,
+      83.8% 96%,
+      82% 100%,
+      67.53% 94.6%,
+      51.94% 100%,
+      33.76% 94.6%,
+      23.37% 98%,
+      0% 92%
+    );
+  }
+}
+
+@keyframes neck-highlight-1 {
+  100% {
+    clip-path: polygon(100% 0, 100% 100%, 20% 100%);
+  }
+}
+
+@keyframes neck-highlight-2 {
+  100% {
+    clip-path: polygon(25% 0, 100% 0, 100% 100%, 10% 100%);
+  }
+}
+
+@keyframes right-ear {
+  100% {
+    clip-path: polygon(
+      0% 14.04%,
+      47% 1.2%,
+      80.3% 21.73%,
+      91.5% 34%,
+      39.5% 95%,
+      10% 93.5%,
+      0% 92.4%
+    );
+  }
+}
+
+@keyframes shirt-shadow {
+  100% {
+    background-color: var(--color-white-3);
+  }
+}
+
+@keyframes tie-shadow {
+  100% {
+    background-color: var(--color-blue-9);
+  }
+}
+
+@keyframes neck-shadow {
+  100% {
+    background-color: var(--color-blue-3);
+    opacity: 1;
+  }
+}
+
+@keyframes eyebrow-highlight {
+  100% {
+    clip-path: polygon(0% 37.5%, 0 0, 88.57% 12.5%, 95.5% 87.5%, 0% 60%);
+  }
+}
+
+@keyframes nose-shadow-2 {
+  100% {
+    opacity: 1;
+    background-color: var(--color-blue-7);
+  }
+}
