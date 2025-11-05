@@ -13,9 +13,10 @@
   --color-white-2: #cfcfc7;
   --color-white-3: #b9bdbe;
   --color-white-4: #fcfcfd;
-  --color-white-5: #f1f1f4;
+  --color-white-5: #f6f6fa;
   --color-white-6: #f6f6f8;
   --color-white-7: #ebebef;
+  --color-white-8: #e6e6ed;
 
   --color-purple-1: #dbe1fb;
   --color-purple-2: #bec9f7;
@@ -67,6 +68,7 @@ body {
   position: relative;
   align-items: center;
   justify-content: center;
+  transition: all 0.5s ease;
   font-family: "system-ui", "Trebuchet MS", "Helvetica";
 }
 
@@ -1101,7 +1103,11 @@ audio {
   position: absolute;
   animation: fade-in 6s ease 8s forwards;
   clip-path: polygon(0 0, 100% 0, 21.3% 100%, 0 100%);
-  background: linear-gradient(48deg, var(--color-blue-3) 0 74.85%, transparent 33%),
+  background: linear-gradient(
+      48deg,
+      var(--color-blue-3) 0 74.85%,
+      transparent 33%
+    ),
     linear-gradient(48deg, var(--color-blue-8) 74.85% 100%);
 }
 
@@ -1324,32 +1330,56 @@ audio {
 
 .action-modal-wrapper button {
   margin: 0;
-  display: flex;
+  z-index: 0;
   border: none;
+  display: flex;
   outline: none;
   cursor: pointer;
+  overflow: hidden;
   appearance: none;
   font-weight: 600;
+  position: relative;
   padding: 15px 18px;
   align-items: center;
   justify-content: center;
   transform: translateZ(0);
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
   color: var(--color-black-4);
   clip-path: inset(0 0 0 0 round 16px);
+  background-color: var(--color-white-5);
+}
+
+.action-modal-wrapper button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.1)
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.action-modal-wrapper button:hover {
+  transform: translateZ(0) translateY(-1px);
+  background-color: var(--color-white-8);
+}
+
+.action-modal-wrapper button:hover::before {
+  opacity: 1;
 }
 
 .action-modal-wrapper button svg {
   width: 17px;
   height: 17px;
+  transition: transform 0.3s ease;
 }
 
-.action-modal-wrapper button:hover {
-  background-image: linear-gradient(
-    to bottom,
-    var(--color-white-6),
-    var(--color-white-7)
-  );
+.action-modal-wrapper button:hover svg {
+  transform: scale(1.05);
 }
 
 .action-modal-wrapper button:active {
@@ -1359,18 +1389,18 @@ audio {
 
 body[data-theme="dark"] .action-modal-wrapper button {
   color: var(--color-white-4);
-  background-image: linear-gradient(
-    to bottom,
-    var(--color-black-5),
-    var(--color-black-6)
-  );
+  background-color: var(--color-black-6);
 }
 
 body[data-theme="dark"] .action-modal-wrapper button:hover {
-  background-image: linear-gradient(
-    to bottom,
-    var(--color-black-7),
-    var(--color-black-8)
+  background-color: var(--color-black-5);
+}
+
+body[data-theme="dark"] .action-modal-wrapper button::before {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
   );
 }
 
